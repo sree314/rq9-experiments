@@ -49,6 +49,7 @@ C.
 
 ```
 mkdir -p empty-corpus
+make custom_adapted
 ./custom_adapted empty-corpus
 ```
 
@@ -62,6 +63,7 @@ stratified sampling contained in `float_sampler.c` and
 
 ```
 mkdir -p empty-corpus
+make custom_strata # the warnings in float_sampler.h are spurious
 ./custom_strata empty-corpus
 ```
 
