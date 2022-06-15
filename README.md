@@ -53,6 +53,20 @@ mkdir -p empty-corpus
 
 In our experiments, this does not find the witnesses.
 
+# custom_strata.c
+
+This strategy also uses a custom mutator, but generates input using
+stratified sampling contained in `float_sampler.c` and
+`float_sampler.h`.
+
+```
+mkdir -p empty-corpus
+./custom_strata empty-corpus
+```
+
+This seems to find witnesses too, and possibly faster than the first,
+no custom mutator strategy.
+
 
 # CBMC
 
