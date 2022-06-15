@@ -2,9 +2,10 @@ This is an repository containing implementations of a stratified
 sampler for floats for RQ9 in our FUZZING 2022 submission.
 
 RQ9 attempts to discover inputs that are witnesses to the differences
-between the oracle version and the buggy version. These witnesses --
-two float numbers --have the characteristics that they are normal, but
-when added together produce a subnormal number.
+between the oracle version and the buggy version using fuzzing instead
+of equivalence checkers. These witnesses -- two float numbers --have
+the characteristics that they are normal, but when added together
+produce a subnormal number.
 
 We use libFuzzer from Clang 12. We run everything from an empty
 corpus. We evaluate three strategies, each outlined in a section below.
@@ -96,4 +97,4 @@ VERIFICATION FAILED
 
 # Legalese
 
-All code in this repository is Copyright (C) 2022, University of Rochester. 
+All code in this repository is Copyright (C) 2022, University of Rochester.
