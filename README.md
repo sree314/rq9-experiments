@@ -93,3 +93,7 @@ Violated property:
 ** 1 of 2 failed (2 iterations)
 VERIFICATION FAILED
 ```
+
+# Legalese
+
+All code in this repository is Copyright (C) 2022, University of Rochester. 
