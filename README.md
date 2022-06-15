@@ -6,11 +6,12 @@ between the oracle version and the buggy version. These witnesses --
 two float numbers --have the characteristics that they are normal, but
 when added together produce a subnormal number.
 
-We use libFuzzer from Clang 12. We run everything from an empty corpus.
+We use libFuzzer from Clang 12. We run everything from an empty
+corpus. We evaluate three strategies, each outlined in a section below.
 
 # nocustom.c
 
-This is the simplest fuzzer with no custom fuzzing mutators.
+This is the simplest strategy with no custom fuzzing mutators.
 
 ```
 mkdir -p empty-corpus
@@ -22,11 +23,11 @@ If it crashes and finds an input, then you can use `dumpfloats.py` to
 look at the input.
 
 ```
-./dumpfloats.py crash-fc80251c6950c1cd22ae18636db21156f0e73781 
+./dumpfloats.py crash-fc80251c6950c1cd22ae18636db21156f0e73781
 -0x1.ffcc000000000p-126 0x1.fffe000000000p-126
 ```
 
-In this case it finds witnesses. You can test these witnesses by:
+In this case it finds witnesses. You can test these witnesses by running:
 
 ```
 ./nocustom_test -0x1.ffcc000000000p-126 0x1.fffe000000000p-126
@@ -38,6 +39,19 @@ which will yield:
 a: -0x1.ffccp-126, b: 0x1.fffep-126, oracle: 0x0p+0, buggy_result: 0x1.9p-137, comparison: 0
 ```
 
+# custom_adapted.c
+
+This strategy uses a custom mutator which is based (poorly) on
+Rigtorp's [Fuzzing floating point
+code](https://rigtorp.se/fuzzing-floating-point-code/) translated into
+C.
+
+```
+mkdir -p empty-corpus
+./custom_adapted empty-corpus
+```
+
+In our experiments, this does not find the witnesses.
 
 
 # CBMC
